@@ -28,9 +28,11 @@ namespace FormsElements
 
         public Form1()
         {
+            //----------------------------------------------------//
+            this.BackColor = Color.Crimson;
             this.Height = 550;
             this.Width = 700;
-            this.Text = "Vorm elementidega";
+            this.Text = "Form elements";
             tree = new TreeView();
             tree.Dock = DockStyle.Left;
             tree.AfterSelect += Tree_AfterSelect;
@@ -46,33 +48,41 @@ namespace FormsElements
             tn.Nodes.Add(new TreeNode("Listbox"));
             tn.Nodes.Add(new TreeNode("DataGridView"));
             tn.Nodes.Add(new TreeNode("MainMenu"));
+
+            //----------------------------------------------------//
             //nupp
+
             btn = new Button();
             btn.Text = "Don't click that!!!";
             btn.Location = new Point(150, 30);
             btn.Height = 30;
             btn.Width = 100;
             btn.Click += Btn_Click;
+            //----------------------------------------------------//
             //label
+
             lbl = new Label();
             lbl.Text = "Elementide loomine c# abil";
             lbl.Size = new Size(60, 30);
-            lbl.Location = new Point(150, 0);
+            lbl.Location = new Point(350, 0);
             lbl.MouseHover += Lbl_MouseHover;
             lbl.MouseLeave += Lbl_MouseLeave;
+            //----------------------------------------------------//
             //imageBox
+
             pb = new PictureBox();
             pb.Size = new Size(100, 100);
             pb.Location = new Point(150, 70);
             pb.ImageLocation = ("../../car.jpg");
             pb.SizeMode = PictureBoxSizeMode.AutoSize;
             pb.MouseDoubleClick += Pb_MouseDoubleClick;
+            //----------------------------------------------------//
             //checkBox
+
             cbA = new CheckBox();
             cbB = new CheckBox();
             cbC = new CheckBox();
             cbD = new CheckBox();
-
             cbA.Location = new Point(600, 70);
             cbA.Text = "Font(label)";
             cbB.Text = "Border(PictureBox)";
@@ -86,7 +96,9 @@ namespace FormsElements
             cbB.MouseClick += CbB_MouseClick;
             cbC.MouseClick += CbC_MouseClick;
             cbD.MouseClick += CbD_MouseClick;
+            //----------------------------------------------------//
             //radiobutton
+
             rb = new RadioButton();
             rb2 = new RadioButton();
             rb.Location = new Point(500, 70);
@@ -97,12 +109,18 @@ namespace FormsElements
             rb2.MouseClick += Rb2_MouseClick;
             rb.CheckedChanged += new EventHandler(rb_Checked);
             rb2.CheckedChanged += new EventHandler(rb_Checked);
+            //----------------------------------------------------//
             //messageBox
+
             mb = new Button();
             mb.Text = "Click it!";
-            mb.Location = new Point(200, 50);
+            mb.Location = new Point(270, 30);
             mb.Click += Mb_Click;
+            mb.Height = 30;
+            mb.Width = 100;
+            //----------------------------------------------------//
             //textBox
+
             txt_box = new TextBox();
             txt_box.Multiline = true;
             txt_box.Text = "You can write something here";
@@ -110,16 +128,17 @@ namespace FormsElements
             txt_box.Width = 100;
             txt_box.Height = 100;
 
-
+            //----------------------------------------------------//
 
             tree.Nodes.Add(tn);
             this.Controls.Add(tree);
 
+            //----------------------------------------------------//
         }
 
         private void Mb_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("MessageBox", "Самое обычное окно");
+            MessageBox.Show("MessageBox-Button", "Actually normal window");
             var answer = MessageBox.Show("Do you want to see what the weather is like today?", "Weather", MessageBoxButtons.YesNo);
             if (answer == DialogResult.Yes)
             {
@@ -132,7 +151,6 @@ namespace FormsElements
                 else
                 {
                     MessageBox.Show("You make me upset", "(＃￣ω￣)");
-
                 }
             }
             else
@@ -268,14 +286,9 @@ namespace FormsElements
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void menuFile_Select4(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
         private void menuFile_Select2(object sender, EventArgs e)
         {
-            pb.Image = Image.FromFile("../../bf.jpg");
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void menuFile_Select(object sender, EventArgs e)
@@ -417,9 +430,8 @@ namespace FormsElements
                 MainMenu menu = new MainMenu();
                 MenuItem mf = new MenuItem("File");
                 mf.MenuItems.Add("Exit", new EventHandler(menuFile_Select));
-                mf.MenuItems.Add("Image", new EventHandler(menuFile_Select2));
                 mf.MenuItems.Add("Full sized", new EventHandler(menuFile_Select3));
-                mf.MenuItems.Add("Minimized", new EventHandler(menuFile_Select4));
+                mf.MenuItems.Add("Minimized", new EventHandler(menuFile_Select2));
                 menu.MenuItems.Add(mf);
                 this.Menu = menu;
             }
